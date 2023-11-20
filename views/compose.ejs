@@ -1,0 +1,21 @@
+<%- include('./partials/header.ejs') %>
+<h1>Compose</h1>
+<form action="/compose" method="POST">
+  <label for="title">Title</label>
+  <input id="title" type="text" name="postTitle" />
+  <label for="post">Post</label>
+  <textarea name="postContent" id="post" cols="30" rows="5"></textarea>
+  <button id="publishBtn" class="btn btn-primary" type="submit">Publish</button>
+</form>
+<%- include('./partials/footer.ejs') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  const form = $("form");
+  form.keydown((e) => {
+    if (e.key == "Enter") {
+      e.preventDefault();
+      form.submit();
+    }
+  });
+</script>

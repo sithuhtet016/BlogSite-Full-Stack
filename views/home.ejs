@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs') %>
+<h1>Home</h1>
+<p><%= HomeContent %></p>
+
+<% PostsArr.forEach(post => { %>
+<h1><%= post.title %></h1>
+<p class="paragraph"><%= post.content %></p>
+<span>
+  <a href="/posts/<%= post.id %>">Read More</a>
+</span>
+
+<% });%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var paragraph = $(".paragraph");
+    var paragraphText = paragraph.text();
+
+    if (paragraphText.length > 100) {
+      var trimmedText = paragraphText.substr(0, 100);
+      paragraph.text(trimmedText + "...");
+    }
+  });
+</script>
+
+<%- include('./partials/footer.ejs') %>
